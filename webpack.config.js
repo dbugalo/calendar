@@ -13,6 +13,7 @@ module.exports = {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel',
+            contentBase: __dirname + '/dist',
             query: {
                 presets: ['es2015', 'react']
             }

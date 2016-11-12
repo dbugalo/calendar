@@ -32,13 +32,8 @@ export default class Calendar extends React.Component {
                                 </td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <Month month={this.state.month} year={this.state.year}/>
-                        </tbody>
+                        <Month month={this.state.month} year={this.state.year}/>
                     </table>
-                </div>
-                <div>
-                    Selection: { this.state.date.format("D MMMM YYYY") }
                 </div>
             </div>
         )

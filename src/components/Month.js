@@ -1,6 +1,8 @@
 import {react} from 'react';
 import moment from 'moment';
 
+import Week from './Week'
+
 export default class Month extends React.Component {
     constructor() {
         super(...arguments);
@@ -36,21 +38,14 @@ export default class Month extends React.Component {
             month.push(weekRange);
         }
         
-        console.log(month);
         this.state = {month: month};
     }
     
     render() {
-        return(
-            this.state.month.map(function(week) {
-                return <tr>
-                    week.by('days', function(day) {
-                        <td>
-                            <a href="#" className="calendar__day calendar__day--muted">1</a>
-                        </td>
-                    })
-                </tr>
-            })
-        )
+        let weeks = this.state.month.map(function(week) {
+            return(<Week range={week} month={this.props.month} />)
+        }.bind(this)); 
+        
+        return(<tbody>{weeks}</tbody>)
     }
 }

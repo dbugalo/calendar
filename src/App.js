@@ -1,10 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import {react} from 'react';
+import Calendar from './components/Calendar'
 
-class Hello extends React.Component {
-    render() {
-        return(<h1>Hello World cole</h1>)
-    }
-}
-
-ReactDOM.render(<Hello />, document.getElementById("conteudo"));
+ReactDOM.render(<Calendar />, document.getElementById("content"));
