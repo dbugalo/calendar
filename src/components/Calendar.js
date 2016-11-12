@@ -1,5 +1,8 @@
 import {react} from 'react';
 import moment from 'moment';
+require('moment-range');
+
+import Month from './Month';
 
 export default class Calendar extends React.Component {
     constructor() {
@@ -30,6 +33,7 @@ export default class Calendar extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
+                            <Month month={this.state.month} year={this.state.year}/>
                         </tbody>
                     </table>
                 </div>
