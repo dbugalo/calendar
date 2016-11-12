@@ -1,16 +1,20 @@
 import {react} from 'react';
+
 import moment from 'moment';
 require('moment-range');
 
 import Month from './Month';
+import Holidays from './Holidays'
 
 export default class Calendar extends React.Component {
     constructor() {
         super(...arguments);
+        
+        let date = moment('2015-01-01');
     	this.state = {
-        	date: moment(),
-            month: moment().month(),
-            year: moment().year()
+        	date: date,
+            month: date.month(),
+            year: date.year()
         }
     }
     
@@ -35,6 +39,7 @@ export default class Calendar extends React.Component {
                         <Month month={this.state.month} year={this.state.year}/>
                     </table>
                 </div>
+                <div>Feriados: <Holidays date={this.state.date} /></div>
             </div>
         )
     }

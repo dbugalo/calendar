@@ -26,7 +26,6 @@ export default class Month extends React.Component {
         for (var i = 0, len = weeks.length; i < len; i++) {
             var week = weeks[i];
             if (i > 0 && week < weeks[i-1]){
-                // We have switched to the next year
                 var firstWeekDay = moment([this.props.year, this.props.month]).add(1, "year").week(week).day(1);
                 var lastWeekDay = moment([this.props.year, this.props.month]).add(1, "year").week(week).day(7);
             } else {
