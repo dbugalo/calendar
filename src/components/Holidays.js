@@ -22,9 +22,10 @@ export default class Holidays extends React.Component {
             
             for (var h in value.holidays) {
                 let holiday = moment(h);
-                if (this.props.date.isSame(holiday)) {
+                if (this.props.date.isSame(holiday, 'month')) {
                     value.holidays[h].map(function(v) {
-                        holidays.push(<Holiday name={v.name} />);    
+                        var i = moment(v.date);
+                        holidays.push(<Holiday name={i.format("DD") + " - " + v.name + " "} />);    
                     })
                 }
             }
@@ -34,6 +35,6 @@ export default class Holidays extends React.Component {
     }
     
     render() {
-        return(<span>{this.state.holidays}</span>)
+        return(<ul>{this.state.holidays}</ul>)
     }
 }

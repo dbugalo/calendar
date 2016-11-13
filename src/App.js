@@ -1,4 +1,12 @@
 import {react} from 'react';
-import Calendar from './components/Calendar'
+import { Router, Route, Link , browserHistory } from 'react-router'
 
-ReactDOM.render(<Calendar />, document.getElementById("content"));
+import Home from './pages/Home';
+import Month from './pages/Month';
+import Day from './pages/Day';
+
+ReactDOM.render(<Router history={browserHistory}>
+                    <Route path="/" component={Home} />
+                    <Route path="/month" component={Month} />
+                    <Route path="/day" component={Day} />
+                </Router>, document.getElementById("content"));
