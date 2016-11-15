@@ -8,8 +8,15 @@ import MonthC from '../components/Month'
 export default class Month extends React.Component {
     constructor(props) {
         super(props);
-        
-        this.state = {country: 'BR'};
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            country: 'BR',
+            tipoHoliday: false
+        };
+    }
+    
+    handleChange(event) {
+        this.setState({tipoHoliday: event.target.value});
     }
     
     render(){
@@ -23,7 +30,14 @@ export default class Month extends React.Component {
                     Pais <Country data={this.state.country} />
                 </div>
                 <br />
-                <MonthC country={this.state.country} date={moment()}/>
+                <div>
+                    Tipo Feriados <select value={this.state.tipoHoliday} onChange={this.handleChange}>
+                        <option value="true">Publico</option>
+                        <option value="false">Todos</option>
+                    </select>
+                </div>
+                <br />
+                <MonthC country={this.state.country} date={moment()} tipoHoliday={this.state.tipoHoliday}/>
             </div>
         );
     }

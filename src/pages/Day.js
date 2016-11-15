@@ -8,11 +8,15 @@ import Country from '../components/Country'
 export default class Day extends React.Component {
     constructor(props) {
         super(props);
-        
-        this.state = {country: 'BR'};
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {country: 'BR', tipoHoliday: false};
     }
-
-    render(){
+    
+    handleChange(event) {
+        this.setState({tipoHoliday: event.target.value});
+    }
+    
+    render() {
         return(
             <div>
                 <div>
@@ -21,6 +25,13 @@ export default class Day extends React.Component {
                 <br />
                 <div>
                     Pais <Country data={this.state.country} />
+                </div>
+                <br />
+                <div>
+                    Tipo Feriados <select value={this.state.tipoHoliday} onChange={this.handleChange}>
+                        <option value="true">Publico</option>
+                        <option value="false">Todos</option>
+                    </select>
                 </div>
                 <br />
                 <div>

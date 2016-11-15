@@ -38,7 +38,7 @@ export default class Month extends React.Component {
             month.push(weekRange);
         }
         
-        this.state = {date: this.props.date, month: month, country: this.props.country};
+        this.state = {date: this.props.date, month: month, country: this.props.country, tipoHoliday: this.props.tipoHoliday};
     }
     
     render() {
@@ -60,7 +60,7 @@ export default class Month extends React.Component {
                         <tbody>{weeks}</tbody>
                     </table>
                 </div>
-                <div>Feriados ({this.state.country}): <Holidays date={this.state.date} /></div>
+                <div>Feriados ({this.state.country}): <Holidays date={this.state.date} country={this.state.country} tipoHoliday={this.state.tipoHoliday}/></div>
             </div>
             )
     }

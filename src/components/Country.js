@@ -1,17 +1,20 @@
 import {react} from 'react';
 
 export default class Country extends React.Component {
-    constructor() {
-        super(...arguments);
+    constructor(props) {
+        super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            country: props.data
+        };
     }
     
     handleChange(event) {
-        this.props.data = event.target.value;
+        this.setState({country: event.target.value});
     }
     
     render() {
-        return <select value={this.props.data} onChange={this.handleChange}>
+        return <select value={this.state.country} onChange={this.handleChange}>
                 <option value="AR">Argentina</option>
                 <option value="AO">Angola</option>
                 <option value="AU">Australia</option>
