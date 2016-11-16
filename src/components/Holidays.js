@@ -5,6 +5,7 @@ import moment from 'moment';
 import $ from "jquery";
 import Promise from 'bluebird';
 
+import eventbus from '../Eventbus'
 import Holiday from './Holiday';
 
 export default class Holidays extends React.Component {
@@ -13,13 +14,27 @@ export default class Holidays extends React.Component {
         
         this.state = {
             country: props.country,
-            tipoHoliday: props.tipoHoliday,
+            tipoHoliday: false,
             holidays: []
         }
+        
+        eventbus().on('country', function(param) {
+            this.setState({country: param});
+            this.getHolidays(param, this.props.date.year(), this.state.tipoHoliday);
+        }.bind(this));
+        
+        eventbus().on('tipoHoliday', function(param) {
+            this.setState({tipoHoliday: param})
+            this.getHolidays(this.state.country, this.props.date.year(), param);
+        }.bind(this));
     }
     
     componentDidMount() {
-        Promise.resolve($.get('https://holidayapi.com/v1/holidays?key=44f3c710-3de3-4f51-9dc4-9520946eb711&country='+ this.state.country+ '&year=' + this.props.date.year() + "&public=" + this.state.tipoHoliday)).then(function(value) {
+        this.getHolidays(this.state.country, this.props.date.year(), this.state.tipoHoliday);
+    }
+    
+    getHolidays(country, year, tipoHoliday) {
+        Promise.resolve($.get('https://holidayapi.com/v1/holidays?key=44f3c710-3de3-4f51-9dc4-9520946eb711&country='+ country+ '&year=' + year + "&public=" + tipoHoliday)).then(function(value) {
             var holidays = [];
             
             for (var h in value.holidays) {

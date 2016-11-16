@@ -2,6 +2,7 @@ import {react} from 'react';
 import {Link} from 'react-router'
 import moment from 'moment'
 
+import eventbus from '../Eventbus'
 import Year from '../components/Year'
 import Country from '../components/Country'
 
@@ -13,7 +14,7 @@ export default class Home extends React.Component {
     }
     
     handleChange(event) {
-        this.setState({tipoHoliday: event.target.value});
+        eventbus().emit('tipoHoliday', event.target.value);
     }
     
     render(){

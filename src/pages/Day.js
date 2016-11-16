@@ -9,11 +9,11 @@ export default class Day extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {country: 'BR', tipoHoliday: false};
+        this.state = {country: 'BR'};
     }
     
     handleChange(event) {
-        this.setState({tipoHoliday: event.target.value});
+        eventbus().emit('tipoHoliday', event.target.value);
     }
     
     render() {
@@ -28,7 +28,7 @@ export default class Day extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Tipo Feriados <select value={this.state.tipoHoliday} onChange={this.handleChange}>
+                    Tipo Feriados <select onChange={this.handleChange}>
                         <option value="true">Publico</option>
                         <option value="false">Todos</option>
                     </select>

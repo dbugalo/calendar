@@ -1,5 +1,7 @@
 import {react} from 'react';
 
+import eventbus from '../Eventbus'
+
 export default class Country extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +12,7 @@ export default class Country extends React.Component {
     }
     
     handleChange(event) {
+        eventbus().emit('country', event.target.value);
         this.setState({country: event.target.value});
     }
     
