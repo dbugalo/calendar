@@ -1,12 +1,12 @@
 import {react} from 'react';
 import { Router, Route, Link , hashHistory } from 'react-router'
 
-import Home from './pages/Home';
-import Month from './pages/Month';
-import Day from './pages/Day';
+import YearAction from './actions/Year';
+import MonthAction from './actions/Month';
+import DayAction from './actions/Day';
 
 ReactDOM.render(<Router history={hashHistory}>
-                    <Route path="/" component={Home} />
-                    <Route path="/month" component={Month} />
-                    <Route path="/day" component={Day} />
+                    <Route path="/" component={YearAction} />
+                    <Route path="/month" component={MonthAction} />
+                    <Route path="/day" component={DayAction} />
                 </Router>, document.getElementById("content"));

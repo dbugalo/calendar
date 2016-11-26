@@ -2,10 +2,11 @@ import {react} from 'react';
 import {Link} from 'react-router'
 import moment from 'moment'
 
-import DayC from '../components/Day'
+import TipoFeriado from '../components/TipoFeriado'
+import Day from '../components/Day'
 import Country from '../components/Country'
 
-export default class Day extends React.Component {
+export default class DayAction extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -28,14 +29,11 @@ export default class Day extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Tipo Feriados <select onChange={this.handleChange}>
-                        <option value="true">Publico</option>
-                        <option value="false">Todos</option>
-                    </select>
+                    Tipo Feriados <TipoFeriado />
                 </div>
                 <br />
                 <div>
-                    <DayC date={moment()} month={moment().format('MM')} />
+                    <Day date={moment()} month={moment().format('MM')} />
                 </div>
             </div>
         );

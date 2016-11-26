@@ -2,21 +2,16 @@ import {react} from 'react';
 import {Link} from 'react-router'
 import moment from 'moment'
 
-import eventbus from '../Eventbus'
 import Country from '../components/Country'
-import MonthC from '../components/Month'
+import Month from '../components/Month'
 
-export default class Month extends React.Component {
+export default class MonthAction extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             country: 'BR'
         };
-    }
-    
-    handleChange(event) {
-        eventbus().emit('tipoHoliday', event.target.value);
     }
     
     render(){
@@ -27,17 +22,14 @@ export default class Month extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Pais <Country data={this.state.country} />
+                    Pais <Country value={this.state.country} />
                 </div>
                 <br />
                 <div>
-                    Tipo Feriados <select onChange={this.handleChange}>
-                        <option value="true">Publico</option>
-                        <option value="false">Todos</option>
-                    </select>
+                    Tipo Feriados 
                 </div>
                 <br />
-                <MonthC country={this.state.country} date={moment()} />
+                <Month country={this.state.country} date={moment()} />
             </div>
         );
     }

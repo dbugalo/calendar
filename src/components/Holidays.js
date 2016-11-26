@@ -5,7 +5,6 @@ import moment from 'moment';
 import $ from "jquery";
 import Promise from 'bluebird';
 
-import eventbus from '../Eventbus'
 import Holiday from './Holiday';
 
 export default class Holidays extends React.Component {
@@ -17,16 +16,6 @@ export default class Holidays extends React.Component {
             tipoHoliday: false,
             holidays: []
         }
-        
-        eventbus().on('country', function(param) {
-            this.setState({country: param});
-            this.getHolidays(param, this.props.date.year(), this.state.tipoHoliday);
-        }.bind(this));
-        
-        eventbus().on('tipoHoliday', function(param) {
-            this.setState({tipoHoliday: param})
-            this.getHolidays(this.state.country, this.props.date.year(), param);
-        }.bind(this));
     }
     
     componentDidMount() {
@@ -42,7 +31,7 @@ export default class Holidays extends React.Component {
                 if (this.props.date.isSame(holiday, 'month')) {
                     value.holidays[h].map(function(v) {
                         var i = moment(v.date);
-                        holidays.push(<Holiday name={i.format("DD") + " - " + v.name + " "} />);    
+                        holidays.push(<Holiday key={i.format("DD-MM-YYYY")} name={i.format("DD") + " - " + v.name + " "} />);    
                     })
                 }
             }

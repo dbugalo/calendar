@@ -1,23 +1,21 @@
 import {react} from 'react';
 
-import eventbus from '../Eventbus'
-
 export default class Country extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        
         this.state = {
-            country: props.data
+            value: props.value
         };
     }
     
     handleChange(event) {
-        eventbus().emit('country', event.target.value);
-        this.setState({country: event.target.value});
+        this.setState({value: event.target.value});
     }
     
     render() {
-        return <select value={this.state.country} onChange={this.handleChange}>
+        return <select value={this.state.value} onChange={this.handleChange}>
                 <option value="AR">Argentina</option>
                 <option value="AO">Angola</option>
                 <option value="AU">Australia</option>
