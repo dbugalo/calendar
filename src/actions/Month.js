@@ -2,6 +2,7 @@ import {react} from 'react';
 import {Link} from 'react-router'
 import moment from 'moment'
 
+import TipoFeriado from '../components/TipoFeriado'
 import Country from '../components/Country'
 import Month from '../components/Month'
 
@@ -26,7 +27,7 @@ export default class MonthAction extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Tipo Feriados 
+                    Tipo Feriados <TipoFeriado />
                 </div>
                 <br />
                 <Month country={this.state.country} date={moment()} />
