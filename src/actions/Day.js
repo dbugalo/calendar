@@ -9,12 +9,8 @@ import Country from '../components/Country'
 export default class DayAction extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        
         this.state = {country: 'BR'};
-    }
-    
-    handleChange(event) {
-        eventbus().emit('tipoHoliday', event.target.value);
     }
     
     render() {

@@ -8,7 +8,7 @@ import Month from '../components/Month'
 export default class MonthAction extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        
         this.state = {
             country: 'BR'
         };
