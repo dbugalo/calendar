@@ -23,7 +23,7 @@ export default class MonthAction extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Pais <Country value={this.state.country} />
+                    Pais <Country />
                 </div>
                 <br />
                 <div>

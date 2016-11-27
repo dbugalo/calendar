@@ -5,8 +5,8 @@ import Week from './Week'
 import Holidays from './Holidays'
 
 export default class Month extends React.Component {
-    constructor() {
-        super(...arguments);
+    constructor(props,context) {
+        super(props, context);
         
         let startDate = moment([this.props.date.year(), this.props.date.month()]);
         let firstDay = moment(startDate).startOf('month');
@@ -38,7 +38,7 @@ export default class Month extends React.Component {
             month.push(weekRange);
         }
         
-        this.state = {date: this.props.date, month: month, country: this.props.country};
+        this.state = {date: this.props.date, month: month};
     }
     
     render() {
@@ -60,8 +60,12 @@ export default class Month extends React.Component {
                         <tbody>{weeks}</tbody>
                     </table>
                 </div>
-                <div>Feriados ({this.state.country}): <Holidays date={this.state.date} country={this.state.country}/></div>
+                <div>Feriados ({this.context.country.value}): <Holidays date={this.state.date}/></div>
             </div>
-            )
+        )
     }
 }
+
+Month.contextTypes = {
+    country: React.PropTypes.object
+};

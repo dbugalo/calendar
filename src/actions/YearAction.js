@@ -2,18 +2,26 @@ import {react} from 'react';
 import {Link} from 'react-router'
 import moment from 'moment'
 
+import Subscription from '../Subscription'
 import TipoFeriado from '../components/TipoFeriado'
 import Month from '../components/Month'
 import Country from '../components/Country'
 
 export default class YearAction extends React.Component {
-    getChildContext() {
-        return {country: "BR", tipoHoliday: false};
+    constructor(props,context) {
+        super(props, context);
+        
+        this.country = new Subscription('BR');
+        this.tipoFeriado = new Subscription(false);
     }
     
-    constructor(props) {
-        super(props);
-        this.state = {country: 'BR', };
+    getChildContext() {
+        return {country: this.country, tipoFeriado: this.tipoFeriado};
+    }
+    
+    componentDidMount() {
+        this.country.subscribe(() => this.forceUpdate())
+        this.tipoFeriado.subscribe(() => this.forceUpdate())
     }
     
     render(){
@@ -24,7 +32,7 @@ export default class YearAction extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Pais <Country data={this.state.country} />
+                    Pais <Country />
                 </div>
                 <br />
                 <div>
@@ -51,6 +59,6 @@ export default class YearAction extends React.Component {
 }
 
 YearAction.childContextTypes = {
-  country: React.PropTypes.string,
-  tipoHoliday: React.PropTypes.boolean
+    country: React.PropTypes.object,
+    tipoFeriado: React.PropTypes.boolean
 };

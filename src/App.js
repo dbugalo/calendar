@@ -1,9 +1,9 @@
 import {react} from 'react';
 import { Router, Route, Link , hashHistory } from 'react-router'
 
-import YearAction from './actions/Year';
-import MonthAction from './actions/Month';
-import DayAction from './actions/Day';
+import YearAction from './actions/YearAction';
+import MonthAction from './actions/MonthAction';
+import DayAction from './actions/DayAction';
 
 ReactDOM.render(<Router history={hashHistory}>
                     <Route path="/" component={YearAction} />

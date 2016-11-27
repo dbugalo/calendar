@@ -8,18 +8,17 @@ import Promise from 'bluebird';
 import Holiday from './Holiday';
 
 export default class Holidays extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         
-        this.state = {
-            country: props.country,
-            tipoHoliday: false,
-            holidays: []
-        }
+        this.state = {holidays: []}
+        
+        this.getHolidays(this.context.country.value, this.props.date.year(), this.context.tipoFeriado.value);
     }
     
     componentDidMount() {
-        this.getHolidays(this.state.country, this.props.date.year(), this.state.tipoHoliday);
+        this.context.country.subscribe(() => this.getHolidays(this.context.country.value, this.props.date.year(), this.context.tipoFeriado.value));
+        this.context.tipoFeriado.subscribe(() => this.getHolidays(this.context.country.value, this.props.date.year(), this.context.tipoFeriado.value));
     }
     
     getHolidays(country, year, tipoHoliday) {
@@ -44,3 +43,8 @@ export default class Holidays extends React.Component {
         return(<ul>{this.state.holidays}</ul>)
     }
 }
+               
+Holidays.contextTypes = {
+    country: React.PropTypes.object,
+    tipoFeriado: React.PropTypes.object
+};

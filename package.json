@@ -9,14 +9,14 @@
   },
   "homepage": "www.luxfacta.com.br/",
   "scripts": {
-    "start": "webpack-dev-server --progress --inline --hot"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
     "jquery": "^3.1.1",
     "moment": "^2.16.0",
     "moment-range": "^2.2.0",
-    "react": "15.3.2",
+    "react": "15.3.0",
     "react-dom": "15.3.2",
     "react-router": "^3.0.0"
   },

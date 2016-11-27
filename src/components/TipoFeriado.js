@@ -1,23 +1,23 @@
 import {react} from 'react';
 
 export default class TipoFeriado extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.handleChange = this.handleChange.bind(this);
-        
-        this.state = {
-            value: props.value
-        };
     }
     
     handleChange(event) {
-        this.setState({value: event.target.value});
+         this.context.tipoFeriado.setValue(event.target.value);
     }
     
     render() {
-        return <select onChange={this.handleChange}>
+        return <select value={this.context.tipoFeriado.value} onChange={this.handleChange}>
             <option value="true">Publico</option>
             <option value="false">Todos</option>
         </select>;
     }
 }
+
+TipoFeriado.contextTypes = {
+    tipoFeriado: React.PropTypes.object
+};

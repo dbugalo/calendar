@@ -4,8 +4,8 @@ module.exports = {
     devtool: 'source-map',
     entry: __dirname + "/src/App.js",
     output: {
-        path: __dirname + "/dist",
-        filename: "App.js"
+        path: __dirname,
+        filename: "bundle.js"
     },
     watch: true,
     module: {
@@ -13,7 +13,6 @@ module.exports = {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel',
-            contentBase: __dirname + '/dist',
             query: {
                 presets: ['es2015', 'react']
             }
