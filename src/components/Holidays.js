@@ -36,7 +36,7 @@ export default class Holidays extends React.Component {
             }
             
             this.setState({holidays: holidays})
-        }.bind(this));
+        }.bind(this)).catch((e) => <li>Houston, we have a problem: {e}</li>);
     }
     
     render() {
