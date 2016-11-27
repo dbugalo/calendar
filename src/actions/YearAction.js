@@ -9,6 +9,15 @@ import Country from '../components/Country'
 export default class YearAction extends React.Component {
 
     render() {
+        var year = moment().year();
+        
+        var months = [];
+        for(var i = 1; i <= 12; i++) {
+            var pad = "00";
+            var date = year + "-" + pad.substring(0, pad.length - (i + "").length) + i + "-01";
+            months.push(<Month date={moment(date)}/>)
+        }
+
         return(
             <div>
                 <div>
@@ -24,18 +33,7 @@ export default class YearAction extends React.Component {
                 </div>
                 <br />
                 <div>
-                    <Month date={moment('2016-01-01')}/>
-                    <Month date={moment('2016-02-01')}/>
-                    <Month date={moment('2016-03-01')}/>
-                    <Month date={moment('2016-04-01')}/>
-                    <Month date={moment('2016-05-01')}/>
-                    <Month date={moment('2016-06-01')}/>
-                    <Month date={moment('2016-07-01')}/>
-                    <Month date={moment('2016-08-01')}/>
-                    <Month date={moment('2016-09-01')}/>
-                    <Month date={moment('2016-10-01')}/>
-                    <Month date={moment('2016-11-01')}/>
-                    <Month date={moment('2016-12-01')}/>
+                    {months}
                 </div>
             </div>
         );
