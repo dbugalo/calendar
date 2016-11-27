@@ -7,14 +7,6 @@ import Country from '../components/Country'
 import Month from '../components/Month'
 
 export default class MonthAction extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            country: 'BR'
-        };
-    }
-    
     render(){
         return(
             <div>
@@ -30,7 +22,7 @@ export default class MonthAction extends React.Component {
                     Tipo Feriados <TipoFeriado />
                 </div>
                 <br />
-                <Month country={this.state.country} date={moment()} />
+                <Month date={moment()} />
             </div>
         );
     }

@@ -7,12 +7,7 @@ import Day from '../components/Day'
 import Country from '../components/Country'
 
 export default class DayAction extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {country: 'BR'};
-    }
-    
+
     render() {
         return(
             <div>
@@ -21,7 +16,7 @@ export default class DayAction extends React.Component {
                 </div>
                 <br />
                 <div>
-                    Pais <Country data={this.state.country} />
+                    Pais <Country />
                 </div>
                 <br />
                 <div>
